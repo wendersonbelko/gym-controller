@@ -1,0 +1,39 @@
+/users:
+  post:
+    tags:
+      - Users
+    security: []
+    description: Create a new user
+    parameters:
+      - name: store
+        in:  body
+        required: true
+        schema:
+          properties:
+            name:
+              type: string
+              example: 'lucio almeida fagundes'
+              required: true
+            cpf:
+              type: string
+              example: '88774116002'
+              required: true
+            birthday:
+              type: date
+              example: '2000-04-07T03:58:28.025Z'
+              required: true
+            email:
+              type: string
+              example: 'exemple@test.com'
+              required: true
+            password:
+              type: string
+              example: '12345678'
+              required: true
+    produces:
+      - application/json
+    responses:
+      201:
+        description: Created
+      409:
+        description: Conflict
