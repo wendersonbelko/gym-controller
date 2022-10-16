@@ -34,7 +34,6 @@ export default class extends BaseSchema {
 
   public async down() {
     this.schema.dropTable(this.tableName)
-    this.schema.dropSchemaIfExists('user_account_status')
-    this.schema.dropSchemaIfExists('user_account_roles')
+    this.schema.raw('DROP TYPE user_account_roles, user_account_status')
   }
 }
