@@ -8,14 +8,14 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('photo').defaultTo('')
       table.string('name').notNullable()
-      table.string('email').notNullable().unique()
-      table.string('cpf').notNullable().unique()
+      table.string('email').notNullable()
+      table.string('cpf').notNullable()
       table.timestamp('birthday').notNullable()
       table.string('password').notNullable()
       table
         .enu('role', ['USER', 'TEACHER', 'GYM'], {
           useNative: true,
-          enumName: 'user_account_role',
+          enumName: 'user_account_roles',
           existingType: false,
         })
         .defaultTo('USER')
@@ -34,5 +34,7 @@ export default class extends BaseSchema {
 
   public async down() {
     this.schema.dropTable(this.tableName)
+    this.schema.dropSchemaIfExists('user_account_status')
+    this.schema.dropSchemaIfExists('user_account_roles')
   }
 }
