@@ -1,9 +1,9 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
-import { UserAccountRole, UserAccountStatus } from 'App/contracts/UserContract'
+import { UserAccountRule, UserAccountStatus } from 'App/contracts/UserContract'
 import User from 'App/Models/User'
 import { DateTime } from 'luxon'
 
-export const userFactory = (status: UserAccountStatus, role: UserAccountRole) =>
+export const userFactory = (status: UserAccountStatus, rule: UserAccountRule) =>
   Factory.define(User, ({ faker }) => {
     return {
       name: faker.name.fullName(),
@@ -13,6 +13,6 @@ export const userFactory = (status: UserAccountStatus, role: UserAccountRole) =>
       password: faker.internet.password(),
       photo: faker.internet.avatar(),
       accountStatus: status,
-      role: role,
+      rule: rule,
     }
   }).build()

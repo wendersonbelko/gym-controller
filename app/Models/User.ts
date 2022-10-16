@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
-import { UserAccountRole, UserAccountStatus } from 'App/contracts/UserContract'
+import { UserAccountRule, UserAccountStatus } from 'App/contracts/UserContract'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true }) public id: number
@@ -17,7 +17,7 @@ export default class User extends BaseModel {
 
   @column() public password: string
 
-  @column() public role: UserAccountRole
+  @column() public rule: UserAccountRule
 
   @column({ columnName: 'account_status' }) public accountStatus: UserAccountStatus
 

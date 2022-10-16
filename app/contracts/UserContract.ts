@@ -1,4 +1,4 @@
-export enum UserAccountRole {
+export enum UserAccountRule {
   USER = 'USER',
   TEACHER = 'TEACHER',
   GYM = 'GYM',
