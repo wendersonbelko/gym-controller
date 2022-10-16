@@ -62,7 +62,7 @@ test.group('users', (group) => {
     const userCreated = await userFactory(UserAccountStatus.PENDING, UserAccountRule.USER).create()
     const userPayload = {
       name: 'wenderson belko',
-      email: 'wenderson@belko.com.br',
+      email: Math.random() * 10 + userCreated.email,
       cpf: userCreated.cpf,
       birthday: moment().year(2000).month(3).date(7),
       password: '123456789',
@@ -84,9 +84,7 @@ test.group('users', (group) => {
       birthday: moment().year(2000).month(3).date(7),
       password: '123456789',
     }
-    const { body } = await supertest(BASE_URL).post('/users').send(userPayload).expect(201)
-
-    await deleteUserAfterTest(body.user.id)
+    const { body } = await supertest(BASE_URL).post('/users').send(userPayload).expect(422)
 
     assert.include(body.message, 'Validation Exception')
     assert.equal(body.code, 'BAD_REQUEST')
@@ -101,9 +99,7 @@ test.group('users', (group) => {
       birthday: moment().year(2000).month(3).date(7),
       password: '123456',
     }
-    const { body } = await supertest(BASE_URL).post('/users').send(userPayload).expect(201)
-
-    await deleteUserAfterTest(body.user.id)
+    const { body } = await supertest(BASE_URL).post('/users').send(userPayload).expect(422)
 
     assert.include(body.message, 'Validation Exception')
     assert.equal(body.code, 'BAD_REQUEST')
@@ -118,9 +114,7 @@ test.group('users', (group) => {
       birthday: moment().year(2000).month(3).date(7),
       password: '123456789',
     }
-    const { body } = await supertest(BASE_URL).post('/users').send(userPayload).expect(201)
-
-    await deleteUserAfterTest(body.user.id)
+    const { body } = await supertest(BASE_URL).post('/users').send(userPayload).expect(422)
 
     assert.include(body.message, 'Validation Exception')
     assert.equal(body.code, 'BAD_REQUEST')
