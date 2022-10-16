@@ -13,9 +13,9 @@ export default class extends BaseSchema {
       table.timestamp('birthday').notNullable()
       table.string('password').notNullable()
       table
-        .enu('role', ['USER', 'TEACHER', 'GYM'], {
+        .enu('rule', ['USER', 'TEACHER', 'GYM'], {
           useNative: true,
-          enumName: 'user_account_roles',
+          enumName: 'user_account_rules',
           existingType: false,
         })
         .defaultTo('USER')
