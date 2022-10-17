@@ -31,7 +31,8 @@
       "@japa/preset-adonis/build/adonis-typings",
       "@adonisjs/lucid",
       "adonis5-swagger",
-      "@adonisjs/view"
+      "@adonisjs/view",
+      "@adonisjs/mail"
     ]
   }
 }
