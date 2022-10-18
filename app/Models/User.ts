@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import { UserAccountRule, UserAccountStatus } from 'App/contracts/UserContract'
+import SecurityToken from './SecurityToken'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true }) public id: number
@@ -24,4 +25,9 @@ export default class User extends BaseModel {
   @column.dateTime({ autoCreate: true }) public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true }) public updatedAt: DateTime
+
+  @hasMany(() => SecurityToken, {
+    foreignKey: 'userId',
+  })
+  public securityToken: HasMany<typeof SecurityToken>
 }
